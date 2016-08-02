@@ -13,32 +13,28 @@
 @end
 
 @implementation YXYViewController
-- (void)viewWillAppear:(BOOL)animated {
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, 50)];
-    [btn setTitle:@"Push JPTableViewController" forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(YXYhandleBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [btn setBackgroundColor:[UIColor brownColor]];
-    [self.view addSubview:btn];
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setUI];
 }
 
-IBOutlet UILabel *numberLabel;
+- (void)setUI {
+    UIButton *showRandomNumberBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, 50)];
+    [showRandomNumberBtn setTitle:@"Make RandomNumber" forState:UIControlStateNormal];
+    [showRandomNumberBtn addTarget:self action:@selector(handleBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [showRandomNumberBtn setBackgroundColor:[UIColor grayColor]];
+    [self.view addSubview:showRandomNumberBtn];
+}
 
 - (IBAction)YXYMakeRandomNumberBtn:(id)sender
 {
-    
+    NSLog(@"origial yxy make random button");
 }
 
-/*
-#pragma mark - Navigation
+- (void)handleBtn:(id)sender
+{
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
 @end

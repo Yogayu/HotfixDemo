@@ -22,17 +22,10 @@
 }
 
 - (IBAction)pushJPTableViewVC:(id)sender {
-//    NSLog(@"did touch hanleBtn");
+
 }
 
 - (void)chooseTheColor {
-//    BOOL isNight = TRUE;
-//    
-//    if (isNight == TRUE) {
-//        self.view.backgroundColor = [UIColor grayColor];
-//    }else{
-//        self.view.backgroundColor = [UIColor whiteColor];
-//    }
 }
 
 @end

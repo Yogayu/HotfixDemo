@@ -4,23 +4,46 @@ defineClass('ViewController', {
     pushJPTableViewVC: function(sender) {
         var tableViewCtrl = JPTableViewController.alloc().init()
         self.navigationController().pushViewController_animated(tableViewCtrl, YES)
-        console.log("did touch hanleBtn");
+        console.log("js did touch handleBtn");
     },
             
     chooseTheColor: function() {
-        var isNight = false;
-            
-        if (isNight == false) {
-            self.view().setBackgroundColor(UIColor.grayColor());
-        } else {
-            self.view().setBackgroundColor(UIColor.whiteColor());
-        }
+      var isNight = true;
+        
+      if (isNight == false) {
+        self.view().setBackgroundColor(UIColor.grayColor());
+      } else {
+        self.view().setBackgroundColor(UIColor.whiteColor());
+      }
     },
 });
 
 defineClass('YXYViewController' , {
-    YXYMakeRandomNumberBtn :function() {
-        var number = 90;
+    viewDidLoad: function() {
+      self.ORIGviewDidLoad;
+            console.log("js YXY view did load");
+    },
+    YXYMakeRandomNumberBtn: function(sender) {
+      var number = 90;
+      console.log(number);
+            console.log("js YXYMakeRandomNumberBtn");
+    },
+    handleBtn:function(sender) {
+            console.log("handle button");
+    }
+})
+
+defineClass('HotfixDemo.SwiftViewController', {
+    viewDidLoad: function() {
+      console.log("js Swift viewDidLoad begin")
+      self.ORIGviewDidLoad()
+      console.log("js Swift viewDidLoad end")
+    }
+})
+
+defineClass('HotfixDemo.TestObject', {
+      testLog: function() {
+      console.log("js TestObject testlog")
     }
 })
 

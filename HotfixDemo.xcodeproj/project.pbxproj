@@ -10,6 +10,8 @@
 		453414F24EAC078FEB0C5DA4 /* libPods-HotfixDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1EC331DD8F39FFC0AEEB82D /* libPods-HotfixDemoUITests.a */; };
 		886384FD517C94D33D9A1D88 /* libPods-HotfixDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31663EAFFE89BFD85CB7CE25 /* libPods-HotfixDemoTests.a */; };
 		8AD2CE2B2E429B07D150820B /* libPods-HotfixDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DD65FCDB985F8DB10E821D /* libPods-HotfixDemo.a */; };
+		9A0FE91A1D54466C00FF0037 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FE9191D54466C00FF0037 /* SwiftViewController.swift */; };
+		9A0FE91C1D544C9B00FF0037 /* TestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FE91B1D544C9B00FF0037 /* TestObject.swift */; };
 		9A2ACB1F1D4DF0E000A2E1F1 /* YXYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2ACB1E1D4DF0E000A2E1F1 /* YXYViewController.m */; };
 		9AC138541D4DD5EA00571C25 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC138531D4DD5EA00571C25 /* main.m */; };
 		9AC138571D4DD5EA00571C25 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC138561D4DD5EA00571C25 /* AppDelegate.m */; };
@@ -47,6 +49,9 @@
 		50C423346F1F0B455B3D50CD /* Pods-HotfixDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotfixDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HotfixDemoUITests/Pods-HotfixDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5CA7E817DAE586D9A9ECA5B0 /* Pods-HotfixDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotfixDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HotfixDemoUITests/Pods-HotfixDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7F89B8B5B5C9A41F1B665805 /* Pods-HotfixDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotfixDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HotfixDemo/Pods-HotfixDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		9A0FE9181D54466C00FF0037 /* HotfixDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HotfixDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		9A0FE9191D54466C00FF0037 /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
+		9A0FE91B1D544C9B00FF0037 /* TestObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestObject.swift; sourceTree = "<group>"; };
 		9A2ACB1D1D4DF0E000A2E1F1 /* YXYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXYViewController.h; sourceTree = "<group>"; };
 		9A2ACB1E1D4DF0E000A2E1F1 /* YXYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXYViewController.m; sourceTree = "<group>"; };
 		9AC1384F1D4DD5EA00571C25 /* HotfixDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotfixDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +163,9 @@
 				9AC1388A1D4DD93E00571C25 /* demo.js */,
 				9A2ACB1B1D4DE0DD00A2E1F1 /* StoryBoard */,
 				9AC138521D4DD5EA00571C25 /* Supporting Files */,
+				9A0FE9191D54466C00FF0037 /* SwiftViewController.swift */,
+				9A0FE9181D54466C00FF0037 /* HotfixDemo-Bridging-Header.h */,
+				9A0FE91B1D544C9B00FF0037 /* TestObject.swift */,
 			);
 			path = HotfixDemo;
 			sourceTree = "<group>";
@@ -466,11 +474,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A0FE91A1D54466C00FF0037 /* SwiftViewController.swift in Sources */,
 				9AC1385A1D4DD5EA00571C25 /* ViewController.m in Sources */,
 				9AC138571D4DD5EA00571C25 /* AppDelegate.m in Sources */,
 				9A2ACB1F1D4DF0E000A2E1F1 /* YXYViewController.m in Sources */,
 				9AC138601D4DD5EA00571C25 /* HotfixDemo.xcdatamodeld in Sources */,
 				9AC138541D4DD5EA00571C25 /* main.m in Sources */,
+				9A0FE91C1D544C9B00FF0037 /* TestObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,11 +626,14 @@
 			baseConfigurationReference = 7F89B8B5B5C9A41F1B665805 /* Pods-HotfixDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = HotfixDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = yogayu.github.io.HotfixDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HotfixDemo/HotfixDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -629,11 +642,13 @@
 			baseConfigurationReference = BDA21E72F6C20D0F7C95D6B8 /* Pods-HotfixDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = HotfixDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = yogayu.github.io.HotfixDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HotfixDemo/HotfixDemo-Bridging-Header.h";
 			};
 			name = Release;
 		};
