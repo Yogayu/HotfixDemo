@@ -14,17 +14,12 @@
 
 @implementation YXYViewController
 - (void)viewWillAppear:(BOOL)animated {
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, 50)];
-    [btn setTitle:@"Push JPTableViewController" forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(YXYhandleBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [btn setBackgroundColor:[UIColor brownColor]];
-    [self.view addSubview:btn];
+
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-
-IBOutlet UILabel *numberLabel;
 
 - (IBAction)YXYMakeRandomNumberBtn:(id)sender
 {
