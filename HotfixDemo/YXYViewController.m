@@ -26,7 +26,6 @@
     [showRandomNumberBtn setBackgroundColor:[UIColor grayColor]];
     [self.view addSubview:showRandomNumberBtn];
 }
-
 - (IBAction)YXYMakeRandomNumberBtn:(id)sender
 {
     NSLog(@"origial yxy make random button");
