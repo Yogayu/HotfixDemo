@@ -1,4 +1,5 @@
 require('YXYViewController,UIColor');
+
 defineClass('ViewController', {
 
     pushJPTableViewVC: function(sender) {
@@ -24,6 +25,7 @@ defineClass('YXYViewController' ,['totleCount'], {
       self.setTotleCount(2) // add new property
       return self
     },
+            
     viewDidLoad: function() {
       self.ORIGviewDidLoad();
       console.log("js YXY view did load");
@@ -44,7 +46,6 @@ defineClass('YXYViewController' ,['totleCount'], {
             
     handleBtn:function(sender) {
       console.log("handle button");
-      
     }
 })
 
@@ -57,9 +58,9 @@ defineClass('HotfixDemo.SwiftViewController', {
 })
 
 defineClass('HotfixDemo.TestObject', {
-      testLog: function() {
-      console.log("js TestObject testlog")
-    }
+  testLog: function() {
+    console.log("js TestObject testlog")
+  }
 })
 
 defineClass('JPTableViewController : UITableViewController <UIAlertViewDelegate>', ['data'], {
@@ -73,12 +74,15 @@ defineClass('JPTableViewController : UITableViewController <UIAlertViewDelegate>
     self.setData(data)
     return data;
   },
+            
   numberOfSectionsInTableView: function(tableView) {
     return 1;
   },
+            
   tableView_numberOfRowsInSection: function(tableView, section) {
     return self.dataSource().length;
   },
+            
   tableView_cellForRowAtIndexPath: function(tableView, indexPath) {
     var cell = tableView.dequeueReusableCellWithIdentifier("cell") 
     if (!cell) {
@@ -87,13 +91,16 @@ defineClass('JPTableViewController : UITableViewController <UIAlertViewDelegate>
     cell.textLabel().setText(self.dataSource()[indexPath.row()])
     return cell
   },
+            
   tableView_heightForRowAtIndexPath: function(tableView, indexPath) {
     return 60
   },
+            
   tableView_didSelectRowAtIndexPath: function(tableView, indexPath) {
      var alertView = require('UIAlertView').alloc().initWithTitle_message_delegate_cancelButtonTitle_otherButtonTitles("Alert",self.dataSource()[indexPath.row()], self, "OK",  null);
      alertView.show()
   },
+            
   alertView_willDismissWithButtonIndex: function(alertView, idx) {
     console.log('click btn ' + alertView.buttonTitleAtIndex(idx).toJS())
   }

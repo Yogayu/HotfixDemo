@@ -22,10 +22,11 @@
 }
 
 - (IBAction)pushJPTableViewVC:(id)sender {
-
+    
 }
 
 - (void)chooseTheColor {
+    
 }
 
 @end

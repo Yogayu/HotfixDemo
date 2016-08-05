@@ -129,6 +129,26 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		9ABE67CD1D54941C00556E8C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9A0FE9191D54466C00FF0037 /* SwiftViewController.swift */,
+				9AC138581D4DD5EA00571C25 /* ViewController.h */,
+				9AC138591D4DD5EA00571C25 /* ViewController.m */,
+				9A2ACB1D1D4DF0E000A2E1F1 /* YXYViewController.h */,
+				9A2ACB1E1D4DF0E000A2E1F1 /* YXYViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		9ABE67CE1D54943400556E8C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9A0FE91B1D544C9B00FF0037 /* TestObject.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		9AC138461D4DD5EA00571C25 = {
 			isa = PBXGroup;
 			children = (
@@ -154,18 +174,13 @@
 		9AC138511D4DD5EA00571C25 /* HotfixDemo */ = {
 			isa = PBXGroup;
 			children = (
+				9ABE67CE1D54943400556E8C /* Model */,
+				9ABE67CD1D54941C00556E8C /* Controller */,
 				9AC138551D4DD5EA00571C25 /* AppDelegate.h */,
 				9AC138561D4DD5EA00571C25 /* AppDelegate.m */,
-				9AC138581D4DD5EA00571C25 /* ViewController.h */,
-				9AC138591D4DD5EA00571C25 /* ViewController.m */,
-				9A2ACB1D1D4DF0E000A2E1F1 /* YXYViewController.h */,
-				9A2ACB1E1D4DF0E000A2E1F1 /* YXYViewController.m */,
 				9AC1388A1D4DD93E00571C25 /* demo.js */,
 				9A2ACB1B1D4DE0DD00A2E1F1 /* StoryBoard */,
 				9AC138521D4DD5EA00571C25 /* Supporting Files */,
-				9A0FE9191D54466C00FF0037 /* SwiftViewController.swift */,
-				9A0FE9181D54466C00FF0037 /* HotfixDemo-Bridging-Header.h */,
-				9A0FE91B1D544C9B00FF0037 /* TestObject.swift */,
 			);
 			path = HotfixDemo;
 			sourceTree = "<group>";
@@ -173,6 +188,7 @@
 		9AC138521D4DD5EA00571C25 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9A0FE9181D54466C00FF0037 /* HotfixDemo-Bridging-Header.h */,
 				9AC138611D4DD5EA00571C25 /* Assets.xcassets */,
 				9AC1385E1D4DD5EA00571C25 /* HotfixDemo.xcdatamodeld */,
 				9AC138661D4DD5EA00571C25 /* Info.plist */,
