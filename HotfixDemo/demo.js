@@ -18,18 +18,33 @@ defineClass('ViewController', {
     },
 });
 
-defineClass('YXYViewController' , {
-    viewDidLoad: function() {
-      self.ORIGviewDidLoad;
-            console.log("js YXY view did load");
+defineClass('YXYViewController' ,['totleCount'], {
+    init: function() {
+      self = self.super().init()
+      self.setTotleCount(2) // add new property
+      return self
     },
+    viewDidLoad: function() {
+      self.ORIGviewDidLoad();
+      console.log("js YXY view did load");
+      
+      var data = self.data(); // get propoty value
+      self.setData(data.toJS().push("JSPatch"));
+      var totleCount = self.totleCount()
+      console.log(data)
+      console.log(totleCount)
+    },
+            
     YXYMakeRandomNumberBtn: function(sender) {
       var number = 90;
       console.log(number);
-            console.log("js YXYMakeRandomNumberBtn");
+      console.log("js YXYMakeRandomNumberBtn");
+      console.log(self.data());
     },
+            
     handleBtn:function(sender) {
-            console.log("handle button");
+      console.log("handle button");
+      
     }
 })
 
@@ -53,7 +68,7 @@ defineClass('JPTableViewController : UITableViewController <UIAlertViewDelegate>
     if (data) return data;
     var data = [];
     for (var i = 0; i < 20; i ++) {
-      data.push("cell No." + i + " test form local.");
+      data.push("cell No." + i + " from js file.");
     }
     self.setData(data)
     return data;

@@ -21,8 +21,10 @@ class SwiftViewController: UIViewController {
     }
 
     func setUI() {
-        let colorBtn = UIButton(frame: CGRect(x: 70, y: 10, width: 100, height: 200))
-        colorBtn.backgroundColor = UIColor.yellowColor()
+        
+        view.backgroundColor = UIColor.init(red: 253, green: 207, blue: 0, alpha: 1)
+        let colorBtn = UIButton(frame: CGRect(x: 70, y: 70, width: 100, height: 100))
+        colorBtn.backgroundColor = UIColor.greenColor()
         view.addSubview(colorBtn)
     }
     

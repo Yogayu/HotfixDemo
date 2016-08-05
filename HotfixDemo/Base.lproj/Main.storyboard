@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="height" constant="50" id="iM2-Pq-Zro"/>
                                 </constraints>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Push JPTableViewController From Local"/>
+                                <state key="normal" title="Push JPTableViewController"/>
                                 <connections>
                                     <action selector="pushJPTableViewVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JKe-7p-Jxd"/>
                                 </connections>
@@ -41,7 +41,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NU2-Wc-lcO">
                                 <rect key="frame" x="20" y="244" width="560" height="50"/>
-                                <color key="backgroundColor" red="0.98624199628829956" green="0.7796865701675415" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.9763370156288147" green="0.80094915628433228" blue="0.19742101430892944" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Push SwiftViewController"/>
                                 <connections>

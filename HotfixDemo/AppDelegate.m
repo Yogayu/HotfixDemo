@@ -22,23 +22,21 @@
     [JPEngine startEngine];
     
     // exec local js file
-//     NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"js"];
-//     NSString *script = [NSString stringWithContentsOfFile:sourcePath encoding:NSUTF8StringEncoding error:nil];
-//    
-//     [JPEngine evaluateScript:script];
+     NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"js"];
+     NSString *script = [NSString stringWithContentsOfFile:sourcePath encoding:NSUTF8StringEncoding error:nil];
+
+     [JPEngine evaluateScript:script];
     
     // exec js file from network
-    // http://7xle3b.com1.z0.glb.clouddn.com/demo.js
-    // http://7xle3b.com1.z0.glb.clouddn.com/demo2.js
-    // http://7xle3b.com1.z0.glb.clouddn.com/demoHandleShowBtn.js
     // https://raw.githubusercontent.com/Yogayu/iOSYoga/master/hotfix_demo.js
     // http://7xle3b.com1.z0.glb.clouddn.com/YXYDemo.js
  
-    // exec js file from network
-    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://7xle3b.com1.z0.glb.clouddn.com/YXYDemo.js"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    /* exec js file from network
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://raw.githubusercontent.com/Yogayu/iOSYoga/master/hotfix_demo.js"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         NSString *script = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         [JPEngine evaluateScript:script];
     }];
+    */
     
     return YES;
 }

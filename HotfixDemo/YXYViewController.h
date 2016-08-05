@@ -10,4 +10,6 @@
 
 @interface YXYViewController : UIViewController
 
+@property (nonatomic) NSArray *data;
+
 @end
