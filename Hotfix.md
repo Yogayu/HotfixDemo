@@ -45,13 +45,13 @@
 相对WaxPatch，JSPatch采用的是JS语言比Lua使用更为广泛，提高的工具可以提高效率；更符合Apple的规则；因为使用系统内置JavaScriptCore.framework不用另外引入脚本引擎，所以小巧；缺点是不支持iOS 6，但豆瓣FM iOS客户端最低支持iOS 7，所以没有影响；另外JSPatch比WaxPatch的使用更广泛，维护更活跃。
 
 ## 安全性
-
-### 问题
+问题：
 
 1. 网络传输过程中被中间人篡改 
 2. 本地脚本文件被解包获取
 
 [JSPatch 部署安全策略](http://blog.cnbang.net/tech/2879/) 
+
 - 传输安全： 对称加密、HTTPS、RSA 校验 
 - 执行安全：灰度、监控、回退
 
@@ -67,7 +67,7 @@
 
 添加JavaScriptCore.framework
 
-### Demo
+### Simple Demo
 
 didFinishLaunchingWithOptions启用脚本：
 
@@ -177,71 +177,58 @@ ViewController源代码：
 
 ## 如何优化？
 
-自动补全插件：https://github.com/bang590/JSPatchX
-OC自动转JS
+- [自动补全插件](https://github.com/bang590/JSPatchX)
+- [OC自动转JS](https://github.com/bang590/JSPatchConvertor)
+- [JPLoader](https://github.com/bang590/JSPatch/tree/master/Loader)
 
----
-
-## 资源
-
-Article：
+## Ref
 
 -  [JSPatch解决方案，会出现的安全问题 ](http://www.securityweek.com/ios-app-patching-solutions-introduce-security-risks-fireeye)
 - [HOT OR NOT? THE BENEFITS AND RISKS OF IOS REMOTE HOT PATCHING](https://www.fireeye.com/blog/threat-research/2016/01/hot_or_not_the_bene.html)
 - [ROLLOUT OR NOT: THE BENEFITS AND RISKS OF IOS REMOTE HOT PATCHING](https://www.fireeye.com/blog/threat-research/2016/04/rollout_or_not_the.html)
-- 对于上诉文章作者的[回应](http://blog.cnbang.net/internet/2990/)
+- 对于上诉文章中安全问题作者的[回应](http://blog.cnbang.net/internet/2990/)
 - [iOS Apps JSPatch Hack](http://thehackernews.com/2016/01/ios-apps-jspatch-hack.html)
-- [讨论](http://blog.oneapm.com/apm-tech/591.html)
+- [热修复讨论](http://blog.oneapm.com/apm-tech/591.html)
 - [Weex & ReactNative & JSPatch](http://awhisper.github.io/2016/07/22/Weex-ReactNative-JSPatch/)
-其他
-- [IOS平台Hotfix框架](http://philonpang.github.io/blog/2015/06/26/jspatchxue-xi-yi-ji-iosping-tai-hotfixzai-xian-bu-ding-guan-li-fang-an-shi-xian/)
-- [JSpatch](http://blog.cnbang.net/works/2767/):
-
-- https://zhuanlan.zhihu.com/p/21677103
-- http://awhisper.github.io/2016/07/22/Weex-ReactNative-JSPatch/
-
-> InfoQ：你们是否使用了热修复技术，目前实践情况如何？
-李贤辉：滴滴采用了 Lua 和 JSPatch 两种热修复技术，由于 JSPatch 更加被苹果官方认可，目前在线上主要使用 JSPatch。我们还在开发一套 JSPatch 发布平台，内部使用者可以通过后台可以下发和管理脚本，并且处理传输安全等部署工作，提供了脚本后台管理、版本管理，并保证传输安全等功能。——[原文](http://www.infoq.com/cn/news/2016/03/lixianhui-interview)
-
-> 与其他产品相比，JSPatch 的最大优势是什么？
-最大的优势是轻巧。JSPatch 整个库只有三个文件，加起来只有 1k 行代码，JSPatch 一直有意识保持库的小巧，不给使用者添加负担。另外相对目前另一个使用 lua 打补丁方案 WaxPatch，JSPatch 的优势有：
-JS 语言
-使用内置 JavaScriptCore 引擎，符合 Apple 审核规则
-线程安全，替换的方法支持多线程调用
-支持替换方法名包含下划线的方法
-支持 Block / GCD
-——[来源]( http://www.wmyouxi.com/a/57298.html#ixzz4G2nZYpzb)
+- [iOS平台Hotfix框架](http://philonpang.github.io/blog/2015/06/26/jspatchxue-xi-yi-ji-iosping-tai-hotfixzai-xian-bu-ding-guan-li-fang-an-shi-xian/)
+- [weex&ReactNative对比](https://zhuanlan.zhihu.com/p/21677103)
+- [Weex & ReactNative & JSPatch](http://awhisper.github.io/2016/07/22/Weex-ReactNative-JSPatch/)
+- [与其他产品相比，JSPatch 的最大优势是什么？]( http://www.wmyouxi.com/a/57298.html#ixzz4G2nZYpzb)
+- [滴滴iOS客户端的架构演变之路](http://www.infoq.com/cn/news/2016/03/lixianhui-interview)
+- [JSPatch使用小记](http://www.cnblogs.com/dsxniubility/p/5080875.html)
 
 
 
-# 需求
-JSpatch安全吗？权限有多大？可以做到哪一些事情？
+# 安全需求
 
-反编译可以达到什么样的效果？是只能看见类还是可以看见类和其中具体的代码呢？
-
-如何通过修改本地的JS文件而得到App中加密的信息。
-如何能够反编译，为什么还需要通过JS去得到呢？直接看代码不就可以了吗？
-
-哪些有害的事情是只有通过JSPatch才能做到的。比如加密内容，比如恶意下载，是只有JSpatch才能做到吗？还是没有JSpatch也能做到呢？
-
-## 安全
-
-它是什么？能做什么? 怎么做?
-既然是使用的OC的runtime
 JSPatch可以通过写JS脚本文件，新增修改OC中的属性，方法，类等。
-实现原理：
-OC Runtime的概念理解
-为什么能够做到？
-如何验证安全性？
-如何搞破坏？
+热修复时，JS能做到的事情，OC都能做到。
 
-文档概要：
+JSPatch，是基于Runtime的特性，通过写JS去动态的修改代码。也就是说，JS能做到的事情，直接写OC都能做到。这样的话，怎么存在着只有JSPatch能做而OC不能做的恶意攻击呢？或者说需是思考JS脚本独有的攻击方式吗？
+
+如果反编译之后，只能知道部分的代码内容，部分类的名称，无法知道详细。而能看见所有的JS文件，那么就会存在风险。也就是说，JS文件提供了一个暴露的可以修改类的入口。
+
+如果能在JS文件方法的过程中截获并修改，那么将有很大的危险。但是，这总情况是很容易预防的。一种方式是加密，一种方式是校验。使用非对称加密容易被破解，使用对称加密进行校验是一种较好的方式。
+
+## Instrumenting the iOS Runtime
+
+- Bypassing jailbreak detection
+- Stealing sensitive data such as encryption keys from an application
+- Force-loading view controllers to access hidden content
+- Attacking local authentication
+- Pivoting to internal networks with corporate applications
+- Demonstrating the risks of malware
+- Inspecting a custom encryption protocol
+
+摘录来自: Dominic Chell. “The Mobile Application Hacker’s Handbook”。 iBooks. 
+
+## 文档概要
 
 1. require
-	引用所需哟啊的OC类。
-	
-	require('className','className2')
-	require('UIView').alloc().init()
+	引用所需类
+		
+		require('className','className2')
+		require('UIView').alloc().init()
 		
 2. 调用OC方法
 	
@@ -276,10 +263,10 @@ OC Runtime的概念理解
    
    	defineClass(classDeclaration, [properties,] instanceMethods, classMethods)
 	
-	@param classDeclaration: 字符串，类名/父类名和Protocol
-	@param properties: 新增property，字符串数组，可省略
-	@param instanceMethods: 要添加或覆盖的实例方法
-	@param classMethods: 要添加或覆盖的类方法
+		@param classDeclaration: 字符串，类名/父类名和Protocol
+		@param properties: 新增property，字符串数组，可省略
+		@param instanceMethods: 要添加或覆盖的实例方法
+		@param classMethods: 要添加或覆盖的类方法
    
    覆盖方法
    覆盖类方法
@@ -315,58 +302,5 @@ OC Runtime的概念理解
 12. 加载动态库
 13. 调试
 
-
-
-
-Ref:
-
-- [OC类方法](https://developer.apple.com/library/prerelease/content/documentation/General/Conceptual/DevPedia-CocoaCore/ClassMethod.html#//apple_ref/doc/uid/TP40008195-CH8-SW1)
-- [Swift 类型方法](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Methods.html)
-- [私有变量](http://blog.devtang.com/2015/03/15/ios-dev-controversy-1/)
-- [Block](https://developer.apple.com/library/prerelease/content/documentation/Cocoa/Conceptual/Blocks/Articles/bxGettingStarted.html)
-
-NOTE:
-
-.m 中，没有名字的category，可以用来添加类的成员变量
-	
-	@interface ViewController ()
-	@property (nonatomic) NSInteger value;
-	
-	@end
-
-或者在实现中直接添加
-	
-	@implementation ViewController {
-	    NSInteger _value;
-	}
-
-原来奇怪的下划线是指私有成员变量的获取，而没有名字的
-
----
-
-## Runtime
-
-SmallTalk 消息机制
-学习语言时根深蒂固的C、C++语言思想
-
-动态语言，会在运行时决定很多，所以需要的不仅仅是编译器，还有运行时系统。
-
-isa可以用来判断所属类。
-
-发送一条消息的时候发生了什么事情？
-	
-	1. 首先，通过 obj 的 isa 指针找到它的 class ;
-	2. 在 class 的 method list 找 foo ;
-	3. 如果 class 中没到 foo，继续往它的 superclass 中找 ;
-	4. 一旦找到 foo 这个函数，就去执行它的实现IMP .
-
-isa是一个指针。
-IMP呢？IMP是”implementation”的缩写，它是Objetive-C 方法(method)实现代码块的地址，可像C函数一样直接调用。
-
-如果没有找到，Objective-C 的运行时会给你三次拯救程序的机会：
-
-	1. Method resolution
-	2. Fast forwarding
-	3. Normal forwarding
 
 
