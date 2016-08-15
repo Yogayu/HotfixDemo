@@ -47,7 +47,7 @@
 
 相对WaxPatch，JSPatch采用的是JS语言比Lua使用更为广泛，提高的工具可以提高效率；更符合Apple的规则；因为使用系统内置JavaScriptCore.framework不用另外引入脚本引擎，所以小巧；缺点是不支持iOS 6，但豆瓣FM iOS客户端最低支持iOS 7，所以没有影响；另外JSPatch比WaxPatch的使用更广泛，维护更活跃。
 
-## 安全性
+## 安全
 
 1. 问题：
 
@@ -59,227 +59,66 @@
 	- 传输安全： 对称加密、HTTPS、RSA 校验 
 	- 执行安全：灰度、监控、回退
 
-## 如何使用？
+
+JSPatch可以通过写JS脚本文件，新增修改OC中的属性，方法，类等。
+
+JSPatch，是基于Runtime的特性，通过写JS去动态的修改代码。也就是说，JS能做到的事情，直接写OC都能做到。这样的话，怎么存在着只有JSPatch能做而OC不能做的恶意攻击呢？或者说需是思考JS脚本独有的攻击方式吗？
+
+其实，如果反编译之后，只能知道部分的代码内容，部分类的名称，无法知道详细。而能看见所有的JS文件代码，那么就会存在风险。也就是说，JS文件提供了一个**暴露**的可以修改类的**入口**。
+
+如果能在JS文件方法的过程中截获并修改，那么将有很大的危险。但是，这总情况是很容易预防的。一种方式是加密，一种方式是校验。使用非对称加密容易被破解，使用对称加密进行校验是一种较好的方式。
+
+## 部署
+
+1. 服务端根据App版本号建立目录，对JS进行加密之后下发。
+		
+		AppName-> AppVersion ->patch.js
+		
+2. 客户端请求JS文件，下载之后校验、解密。
+
+	![-w320](media/14712542318789.jpg)
+
+3. 确定安全之后，执行。
+
+## 使用
 
 1. 添加依赖
-
-		pod init
 	
 		platform :ios, '7.0'
 		pod 'JSPatch'
-		
-		pod install
+	
 
 2. 添加JavaScriptCore.framework
-
-### Simple Demo
-
-didFinishLaunchingWithOptions启用脚本：
-
-	[JPEngine startEngine];
-    
-    // exec js file from local
-     NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"js"];
-     NSString *script = [NSString stringWithContentsOfFile:sourcePath encoding:NSUTF8StringEncoding error:nil];
-    
-     [JPEngine evaluateScript:script];
-     
-    // exec js file from network
-    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://7xle3b.com1.z0.glb.clouddn.com/YXYDemo.js"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        NSString *script_online = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        [JPEngine evaluateScript:script_online];
-        NSLog(@"Run the script from internet.");
-    }];
-
-编写JS文件，导入所需头文件：
-
-	require('YXYViewController,UIColor');
-ViewController源代码：
+3. 编写JS代码，在AppDelegate中下载执行
 	
-	#import "ViewController.h"
-	#import "YXYViewController.h"
-	#import "JPEngine.h"
+	例如：
+	AppDelegate.m
 	
-	@interface ViewController ()
-	
-	@end
-	
-	@implementation ViewController
-	
-	- (void)viewDidLoad {
-	    [super viewDidLoad];
-	    [self chooseTheColor];
-	}
-	
-	- (IBAction)pushJPTableViewVC:(id)sender {
-	}
-	
-	- (void)chooseTheColor {
-	}
-	
-	@end
+	- 添加头文件
 
-通过JS写方法：
+			#import "JPEngine.h"
+			#import "AFNetworking.h" // Optional
 
-	defineClass('ViewController', {
+	- Demo中封装了两个函数：`loadJSPatch`,`EvaluateScript`，调用即可。
+	- 其中在EvaluateScript里调用
+		
+			[JPEngine startEngine];
+			[JPEngine evaluateScript:jsFile];
 
-    pushJPTableViewVC: function(sender) {
-        var tableViewCtrl = JPTableViewController.alloc().init()
-        self.navigationController().pushViewController_animated(tableViewCtrl, YES)
-        console.log("did touch hanleBtn");
-    },
-            
-    chooseTheColor: function() {
-        var isNight = false;
-            
-        if (isNight == false) {
-            self.view().setBackgroundColor(UIColor.grayColor());
-        } else {
-            self.view().setBackgroundColor(UIColor.whiteColor());
-        }
-    },
-	});
+		执行已下载的JS
 
-通过JS写一个新的TableViewController：
-	
-	defineClass('JPTableViewController : UITableViewController <UIAlertViewDelegate>', ['data'], {
-	  dataSource: function() {
-	    var data = self.data();
-	    if (data) return data;
-	    var data = [];
-	    for (var i = 0; i < 20; i ++) {
-	      data.push("cell No." + i + " test form local.");
-	    }
-	    self.setData(data)
-	    return data;
-	  },
-	  numberOfSectionsInTableView: function(tableView) {
-	    return 1;
-	  },
-	  tableView_numberOfRowsInSection: function(tableView, section) {
-	    return self.dataSource().length;
-	  },
-	  tableView_cellForRowAtIndexPath: function(tableView, indexPath) {
-	    var cell = tableView.dequeueReusableCellWithIdentifier("cell") 
-	    if (!cell) {
-	      cell = require('UITableViewCell').alloc().initWithStyle_reuseIdentifier(0, "cell")
-	    }
-	    cell.textLabel().setText(self.dataSource()[indexPath.row()])
-	    return cell
-	  },
-	  tableView_heightForRowAtIndexPath: function(tableView, indexPath) {
-	    return 60
-	  },
-	  tableView_didSelectRowAtIndexPath: function(tableView, indexPath) {
-	     var alertView = require('UIAlertView').alloc().initWithTitle_message_delegate_cancelButtonTitle_otherButtonTitles("Alert",self.dataSource()[indexPath.row()], self, "OK",  null);
-	     alertView.show()
-	  },
-	  alertView_willDismissWithButtonIndex: function(alertView, idx) {
-	    console.log('click btn ' + alertView.buttonTitleAtIndex(idx).toJS())
-	  }
-	})
+	具体JS编写方式见[JSPatch文档](https://github.com/bang590/JSPatch/wiki/JSPatch-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)。
 
+> **问题：**
+
+- **如何确定在didFinishLaunchingWithOptions、applicationDidBecomeActive中调用的顺序？即何时下载、何时更新更合适？更新的频率设为多少最合适？**
+- **是否封装为一个Manager更好？如何封装？**
 
 ## 辅助工具
 
 - [自动补全插件](https://github.com/bang590/JSPatchX)
 - [OC自动转JS](https://github.com/bang590/JSPatchConvertor)
 - [JPLoader](https://github.com/bang590/JSPatch/tree/master/Loader)
-
-
-
-# 安全需求
-
-JSPatch可以通过写JS脚本文件，新增修改OC中的属性，方法，类等。
-热修复时，JS能做到的事情，OC都能做到。
-
-JSPatch，是基于Runtime的特性，通过写JS去动态的修改代码。也就是说，JS能做到的事情，直接写OC都能做到。这样的话，怎么存在着只有JSPatch能做而OC不能做的恶意攻击呢？或者说需是思考JS脚本独有的攻击方式吗？
-
-如果反编译之后，只能知道部分的代码内容，部分类的名称，无法知道详细。而能看见所有的JS文件，那么就会存在风险。也就是说，JS文件提供了一个暴露的可以修改类的入口。
-
-如果能在JS文件方法的过程中截获并修改，那么将有很大的危险。但是，这总情况是很容易预防的。一种方式是加密，一种方式是校验。使用非对称加密容易被破解，使用对称加密进行校验是一种较好的方式。
-
-## [JSPatch文档概要](https://github.com/bang590/JSPatch/wiki/JSPatch-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)
-
-1. require
-	引用所需类
-		
-		require('className','className2')
-		require('UIView').alloc().init()
-		
-2. 调用OC方法
-	
-   > A class method is a method that operates on class objects rather than instances of the class.
- 
-	Swift: Type methods are similar to class methods in Objective-C.
-   			
-		class SomeClass {
-		    class func someTypeMethod() {
-		        // type method implementation goes here
-		    }
-		}
-		SomeClass.someTypeMethod()
-	
-	区别：Swift中可以对class、structures和enumerations定义类型方法，但OC中只能对类定义类方法。
- 
-   调用类方法
-  
-   		var redColor = UIColor.redColor();
-   		
-   调用实例方法
-   	
-   		var view = UIView.alloc().init();
-		view.setNeedsLayout();
-	
-  参数传递
-   Property
-   方法名转换
-   
-3. defineClass
-      API
-   
-   	defineClass(classDeclaration, [properties,] instanceMethods, classMethods)
-	
-		@param classDeclaration: 字符串，类名/父类名和Protocol
-		@param properties: 新增property，字符串数组，可省略
-		@param instanceMethods: 要添加或覆盖的实例方法
-		@param classMethods: 要添加或覆盖的类方法
-   
-   覆盖方法
-   覆盖类方法
-   覆盖 Category 方法
-   Super
-   	
-   		self.super() 
-   	
-   Property
-     	 获取/修改 OC 定义的 Property
-     	 动态新增 Property
-   私有成员变量
-   添加新方法
-   Protocol
-   
-4. 特殊类型
-   Struct
-   Selector
-   nil
-5. NSArray / NSString / NSDictionary
-6. Block
-   block传递
-   block 里使用 self 变量
-   限制
-7. __weak / __strong
-8. GCD
-9. 传递 id* 参数
-10. 常量、枚举、宏、全局变量
-   常量/枚举
-   宏
-   全局变量
-11. Swift
-12. 加载动态库
-13. 调试
-
-
 
 
 ## Reference
