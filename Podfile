@@ -5,6 +5,7 @@ target 'HotfixDemo' do
 # Your Podfile
   platform :ios, ‘7.0’
   pod 'JSPatch'
+  pod 'AFNetworking', '~> 3.0'
 
   # Uncomment this line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!

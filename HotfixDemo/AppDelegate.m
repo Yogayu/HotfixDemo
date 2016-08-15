@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "JPEngine.h"
+#import "AFNetworking.h"
 
 @interface AppDelegate ()
 
@@ -15,53 +16,71 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    
-    
-    [JPEngine startEngine];
-    
-    // exec local js file
-     NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"js"];
-     NSString *script = [NSString stringWithContentsOfFile:sourcePath encoding:NSUTF8StringEncoding error:nil];
 
-     [JPEngine evaluateScript:script];
+#define FilePath ([[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil])
+
+// remote files
+// http://7xle3b.com1.z0.glb.clouddn.com/YXYDemo.js
+// https://raw.githubusercontent.com/Yogayu/iOSYoga/master/hotfix_demo.js
+
+-(void)loadJSPatch
+{
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    NSURL *URL = [NSURL URLWithString:@"https://raw.githubusercontent.com/Yogayu/iOSYoga/master/hotfix_demo.js"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response)
+        {
+          NSURL *documentsDirectoryURL = FilePath;
+          
+          return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+        }
+                    completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error)
+        {
+          NSLog(@"File downloaded to: %@", filePath);
+        }];
+    [downloadTask resume];
     
-    // exec js file from network
-    // https://raw.githubusercontent.com/Yogayu/iOSYoga/master/hotfix_demo.js
-    // http://7xle3b.com1.z0.glb.clouddn.com/YXYDemo.js
+}
+
+-(void)EvaluateScript
+{
+    NSURL *p = FilePath;
+    NSString *jsFile = [NSString stringWithContentsOfFile:[p.path stringByAppendingString:@"/hotfix_demo.js"] encoding:NSUTF8StringEncoding error:nil];
     
-    // exec js file from network
-    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://raw.githubusercontent.com/Yogayu/iOSYoga/master/hotfix_demo.js"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        NSString *script = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        [JPEngine evaluateScript:script];
-    }];
+    if (jsFile.length > 0)
+    {
+        // TODO: decode the js content
+        
+        // run
+        [JPEngine startEngine];
+        [JPEngine evaluateScript:jsFile];
+    }
     
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // set a peroid of time to send the request.
+    // if ...
+    [self loadJSPatch];
     
     return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [self EvaluateScript];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
 
