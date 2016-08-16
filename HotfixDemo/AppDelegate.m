@@ -32,10 +32,9 @@
     NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response)
         {
           NSURL *documentsDirectoryURL = FilePath;
-          
           return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
         }
-                    completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error)
+        completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error)
         {
           NSLog(@"File downloaded to: %@", filePath);
         }];

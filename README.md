@@ -109,6 +109,8 @@ JSPatch，是基于Runtime的特性，通过写JS去动态的修改代码。也�
 
 	具体JS编写方式见[JSPatch文档](https://github.com/bang590/JSPatch/wiki/JSPatch-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)。
 
+实际使用中配合[JPLoader](https://github.com/bang590/JSPatch/wiki/JSPatch-Loader-%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3)进行脚本的下载和更新，其中的[pack.php](https://github.com/bang590/JSPatch/blob/master/Loader/tools/packer.php)可用于脚本的加密和压缩。
+
 > **问题：**
 
 - **如何确定在didFinishLaunchingWithOptions、applicationDidBecomeActive中调用的顺序？即何时下载、何时更新更合适？更新的频率设为多少最合适？**
@@ -118,7 +120,7 @@ JSPatch，是基于Runtime的特性，通过写JS去动态的修改代码。也�
 
 - [自动补全插件](https://github.com/bang590/JSPatchX)
 - [OC自动转JS](https://github.com/bang590/JSPatchConvertor)
-- [JPLoader](https://github.com/bang590/JSPatch/tree/master/Loader)
+- [JPLoader](https://github.com/bang590/JSPatch/wiki/JSPatch-Loader-%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3)
 
 
 ## Reference
