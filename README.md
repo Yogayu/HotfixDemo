@@ -72,14 +72,34 @@ JSPatch，是基于Runtime的特性，通过写JS去动态的修改代码。也�
 
 1. 服务端根据App版本号建立目录，对JS进行加密之后下发。
 		
-		AppName-> AppVersion ->patch.js
-		
+		root -> AppVersion -> v1.zip
+
+	eg.![4_6_1](media/4_6_1.png)
+
+
 2. 客户端请求JS文件，下载之后校验、解密。
+
+	调用JPLoad updateToVersion。
+	
+		  if (isPatchEnable) {
+		    if (currentVersion < newVersion) {
+		      [JPLoader updateToVersion:newVersion callback:^(NSError *error) {
+		        if (!error) {
+		          [JPLoader run];
+		          return;
+		        }
+		      }];
+		    } else if (currentVersion > minVersion) {
+		      [JPLoader run];
+		    }
+		  }
 
 	![-w320](media/14712542318789.jpg)
 
-3. 确定安全之后，执行。
 
+
+3. 确定安全之后，执行。
+	
 ## 使用
 
 1. 添加依赖
@@ -88,26 +108,39 @@ JSPatch，是基于Runtime的特性，通过写JS去动态的修改代码。也�
 		pod 'JSPatch'
 	
 
-2. 添加JavaScriptCore.framework
-3. 编写JS代码，在AppDelegate中下载执行
+2. 添加JavaScriptCore.framework，添加JPLoad文件。
+3. 编写JS代码，在AppDelegate中下载执行。
 	
 	例如：
-	AppDelegate.m
+	假设使用JPLoad，在AppDelegate.m 中
 	
 	- 添加头文件
 
 			#import "JPEngine.h"
-			#import "AFNetworking.h" // Optional
-
-	- Demo中封装了两个函数：`loadJSPatch`,`EvaluateScript`，调用即可。
-	- 其中在EvaluateScript里调用
+			#import "JPLoad.h"
+			
+	- didFinishLaunchingWithOptions 中 调用JPLoader中updateToVersion进行更新（会进行解密与校验），成功之后运行。
 		
-			[JPEngine startEngine];
-			[JPEngine evaluateScript:jsFile];
-
-		执行已下载的JS
-
-	具体JS编写方式见[JSPatch文档](https://github.com/bang590/JSPatch/wiki/JSPatch-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)。
+			  NSInteger currentVersion = [JPLoader currentVersion];
+			  NSInteger minVersion = 0.0;
+			  NSInteger newVersion = 1.0;
+			  BOOL isPatchEnable = YES;
+			  
+			  if (isPatchEnable) {
+			    if (currentVersion < newVersion) {
+			      [JPLoader updateToVersion:newVersion callback:^(NSError *error) {
+			        if (!error) {
+			          [JPLoader run];
+			          return;
+			        }
+			      }];
+			    } else if (currentVersion > minVersion) {
+			      [JPLoader run];
+			    }
+			  }
+	
+	
+具体JS编写方式见[JSPatch文档](https://github.com/bang590/JSPatch/wiki/JSPatch-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)。
 
 实际使用中配合[JPLoader](https://github.com/bang590/JSPatch/wiki/JSPatch-Loader-%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3)进行脚本的下载和更新，其中的[pack.php](https://github.com/bang590/JSPatch/blob/master/Loader/tools/packer.php)可用于脚本的加密和压缩。
 
@@ -115,6 +148,8 @@ JSPatch，是基于Runtime的特性，通过写JS去动态的修改代码。也�
 
 - **如何确定在didFinishLaunchingWithOptions、applicationDidBecomeActive中调用的顺序？即何时下载、何时更新更合适？更新的频率设为多少最合适？**
 - **是否封装为一个Manager更好？如何封装？**
+- 目前有实现奔溃监控吗？灰度机制如何实现？
+- 是否需要及时撤回脚本？(JPCleaner)
 
 ## 辅助工具
 
