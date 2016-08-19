@@ -70,6 +70,7 @@ defineClass('JPTableViewController : UITableViewController <UIAlertViewDelegate>
     var data = [];
     for (var i = 0; i < 20; i ++) {
       data.push("cell No." + i + " from js file.");
+      console.log("js file form local.")
     }
     self.setData(data)
     return data;

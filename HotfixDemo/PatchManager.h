@@ -10,9 +10,13 @@
 #import "AFNetworking.h"
 #import "JPEngine.h"
 
+const static NSString *rootUrl = @"http://127.0.0.1:5000";
+
 @interface PatchManager : NSObject
--(Boolean)needUpdate;
--(NSInteger)currentVersion;
--(void)loadJSPatch;
--(void)EvaluateScript;
+- (void)run;
+- (void)runScript;
+- (NSString *)fileMD5:(NSString *)filePath;
+- (void)runTestScriptInBundle;
+- (void)update:(NSInteger)version patchURL:(NSURL*)patchURL;
+- (NSInteger)currentVersion;
 @end

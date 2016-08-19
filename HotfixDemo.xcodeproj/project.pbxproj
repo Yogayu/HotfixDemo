@@ -24,7 +24,7 @@
 		9AC138701D4DD5EA00571C25 /* HotfixDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1386F1D4DD5EA00571C25 /* HotfixDemoTests.m */; };
 		9AC1387B1D4DD5EA00571C25 /* HotfixDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1387A1D4DD5EA00571C25 /* HotfixDemoUITests.m */; };
 		9AC1388B1D4DD93E00571C25 /* demo.js in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1388A1D4DD93E00571C25 /* demo.js */; };
-		9AEA1A001D6594280028AB7A /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 9AEA19FF1D6594280028AB7A /* main.js */; };
+		9AEA1A001D6594280028AB7A /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = 9AEA19FF1D6594280028AB7A /* test.js */; };
 		9AEA1A511D65A8DD0028AB7A /* PatchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA1A501D65A8DD0028AB7A /* PatchManager.m */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +75,7 @@
 		9AC1387C1D4DD5EA00571C25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AC138881D4DD77A00571C25 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		9AC1388A1D4DD93E00571C25 /* demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = demo.js; path = ../demo.js; sourceTree = "<group>"; };
-		9AEA19FF1D6594280028AB7A /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
+		9AEA19FF1D6594280028AB7A /* test.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
 		9AEA1A4F1D65A8DD0028AB7A /* PatchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatchManager.h; sourceTree = "<group>"; };
 		9AEA1A501D65A8DD0028AB7A /* PatchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatchManager.m; sourceTree = "<group>"; };
 		A1EC331DD8F39FFC0AEEB82D /* libPods-HotfixDemoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HotfixDemoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,7 +225,7 @@
 		9AEA19FB1D6593DB0028AB7A /* Patch */ = {
 			isa = PBXGroup;
 			children = (
-				9AEA19FF1D6594280028AB7A /* main.js */,
+				9AEA19FF1D6594280028AB7A /* test.js */,
 				9AC1388A1D4DD93E00571C25 /* demo.js */,
 			);
 			path = Patch;
@@ -367,7 +367,7 @@
 				9AC138621D4DD5EA00571C25 /* Assets.xcassets in Resources */,
 				9AC1385D1D4DD5EA00571C25 /* Main.storyboard in Resources */,
 				9AC1388B1D4DD93E00571C25 /* demo.js in Resources */,
-				9AEA1A001D6594280028AB7A /* main.js in Resources */,
+				9AEA1A001D6594280028AB7A /* test.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

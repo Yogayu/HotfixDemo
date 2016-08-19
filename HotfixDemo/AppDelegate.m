@@ -18,10 +18,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
   PatchManager *patchManager = [[PatchManager alloc] init];
-  [patchManager needUpdate];
-  [patchManager loadJSPatch];
-  [patchManager EvaluateScript];
-    
+//  [patchManager run];
+  [patchManager runTestScriptInBundle];
+  
   return YES;
 }
 
