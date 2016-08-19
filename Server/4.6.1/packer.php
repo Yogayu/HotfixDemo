@@ -18,6 +18,8 @@ B3DQWbCEFsJ2eW+1fDT+kQJBANUUbnJNJtrUMK013eEIWwgXLk7cnJ71CkhtnVUP
 -----END RSA PRIVATE KEY-----
 EOD;
 
+// php packer.php main.js -o v2
+
 $files = "";
 $zipFile = "script.zip";
 $finalFile = "v1";

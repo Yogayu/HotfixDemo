@@ -10,26 +10,26 @@ import UIKit
 
 class SwiftViewController: UIViewController {
 
-    var number = 0
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.setUI()
-        let testObject = TestObject()
-        testObject.testLog()
-        self.testLog()
-    }
+  var number = 0
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.setUI()
+    let testObject = TestObject()
+    testObject.testLog()
+    self.testLog()
+  }
 
-    func setUI() {
-        
-        view.backgroundColor = UIColor.init(red: 253, green: 207, blue: 0, alpha: 1)
-        let colorBtn = UIButton(frame: CGRect(x: 70, y: 70, width: 100, height: 100))
-        colorBtn.backgroundColor = UIColor.greenColor()
-        view.addSubview(colorBtn)
-    }
+  func setUI() {
     
-    dynamic func testLog() {
-        print("ViewController orig testLog")
-    }
+    view.backgroundColor = UIColor.init(red: 253, green: 207, blue: 0, alpha: 1)
+    let colorBtn = UIButton(frame: CGRect(x: 70, y: 70, width: 100, height: 100))
+    colorBtn.backgroundColor = UIColor.greenColor()
+    view.addSubview(colorBtn)
+  }
+  
+  dynamic func testLog() {
+    print("ViewController orig testLog")
+  }
     
 }

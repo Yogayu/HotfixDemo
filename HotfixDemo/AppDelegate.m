@@ -7,8 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "JPEngine.h"
-#import "AFNetworking.h"
+#import "PatchManager.h"
 
 @interface AppDelegate ()
 
@@ -16,54 +15,14 @@
 
 @implementation AppDelegate
 
-
-#define FilePath ([[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil])
-
-// remote files
-// http://7xle3b.com1.z0.glb.clouddn.com/YXYDemo.js
-// https://raw.githubusercontent.com/Yogayu/iOSYoga/master/hotfix_demo.js
-
--(void)loadJSPatch
-{
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    NSURL *URL = [NSURL URLWithString:@"https://raw.githubusercontent.com/Yogayu/iOSYoga/master/hotfix_demo.js"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response)
-        {
-          NSURL *documentsDirectoryURL = FilePath;
-          return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
-        }
-        completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error)
-        {
-          NSLog(@"File downloaded to: %@", filePath);
-        }];
-    [downloadTask resume];
-    
-}
-
--(void)EvaluateScript
-{
-    NSURL *p = FilePath;
-    NSString *jsFile = [NSString stringWithContentsOfFile:[p.path stringByAppendingString:@"/hotfix_demo.js"] encoding:NSUTF8StringEncoding error:nil];
-    
-    if (jsFile.length > 0)
-    {
-        // TODO: decode the js content
-        
-        // run
-        [JPEngine startEngine];
-        [JPEngine evaluateScript:jsFile];
-    }
-    
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // set a peroid of time to send the request.
-    // if ...
-    [self loadJSPatch];
     
-    return YES;
+  PatchManager *patchManager = [[PatchManager alloc] init];
+  [patchManager needUpdate];
+  [patchManager loadJSPatch];
+  [patchManager EvaluateScript];
+    
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -76,7 +35,6 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [self EvaluateScript];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

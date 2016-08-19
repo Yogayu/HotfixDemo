@@ -15,21 +15,21 @@
 @implementation YXYViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    [self setUI];
+  [super viewDidLoad];
+  [self setUI];
 }
 
 - (void)setUI {
-    UIButton *showRandomNumberBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, 50)];
-    [showRandomNumberBtn setTitle:@"Make RandomNumber" forState:UIControlStateNormal];
-    [showRandomNumberBtn addTarget:self action:@selector(handleBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [showRandomNumberBtn setBackgroundColor:[UIColor grayColor]];
-    [self.view addSubview:showRandomNumberBtn];
+  UIButton *showRandomNumberBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, 50)];
+  [showRandomNumberBtn setTitle:@"Make RandomNumber" forState:UIControlStateNormal];
+  [showRandomNumberBtn addTarget:self action:@selector(handleBtn:) forControlEvents:UIControlEventTouchUpInside];
+  [showRandomNumberBtn setBackgroundColor:[UIColor grayColor]];
+  [self.view addSubview:showRandomNumberBtn];
 }
 
 - (IBAction)YXYMakeRandomNumberBtn:(id)sender
 {
-    NSLog(@"origial yxy make random button");
+  NSLog(@"origial yxy make random button");
 }
 
 - (void)handleBtn:(id)sender

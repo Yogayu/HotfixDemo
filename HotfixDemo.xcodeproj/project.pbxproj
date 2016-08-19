@@ -13,14 +13,7 @@
 		9A0FE91A1D54466C00FF0037 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FE9191D54466C00FF0037 /* SwiftViewController.swift */; };
 		9A0FE91C1D544C9B00FF0037 /* TestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FE91B1D544C9B00FF0037 /* TestObject.swift */; };
 		9A2ACB1F1D4DF0E000A2E1F1 /* YXYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2ACB1E1D4DF0E000A2E1F1 /* YXYViewController.m */; };
-		9A71B3C41D62CE48000FD087 /* JPLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A71B3B21D62CE48000FD087 /* JPLoader.m */; };
-		9A71B3C51D62CE48000FD087 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 9A71B3B61D62CE48000FD087 /* ioapi.c */; };
-		9A71B3C61D62CE48000FD087 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 9A71B3B81D62CE48000FD087 /* mztools.c */; };
-		9A71B3C71D62CE48000FD087 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9A71B3BA1D62CE48000FD087 /* unzip.c */; };
-		9A71B3C81D62CE48000FD087 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9A71B3BC1D62CE48000FD087 /* zip.c */; };
-		9A71B3C91D62CE48000FD087 /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A71B3BF1D62CE48000FD087 /* RSA.m */; };
-		9A71B3CA1D62CE48000FD087 /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A71B3C11D62CE48000FD087 /* ZipArchive.m */; };
-		9A71B3CB1D62CE48000FD087 /* packer.php in Resources */ = {isa = PBXBuildFile; fileRef = 9A71B3C31D62CE48000FD087 /* packer.php */; };
+		9A4EBA121D64459B002BD8B4 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC138881D4DD77A00571C25 /* JavaScriptCore.framework */; };
 		9AC138541D4DD5EA00571C25 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC138531D4DD5EA00571C25 /* main.m */; };
 		9AC138571D4DD5EA00571C25 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC138561D4DD5EA00571C25 /* AppDelegate.m */; };
 		9AC1385A1D4DD5EA00571C25 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC138591D4DD5EA00571C25 /* ViewController.m */; };
@@ -30,8 +23,9 @@
 		9AC138651D4DD5EA00571C25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC138631D4DD5EA00571C25 /* LaunchScreen.storyboard */; };
 		9AC138701D4DD5EA00571C25 /* HotfixDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1386F1D4DD5EA00571C25 /* HotfixDemoTests.m */; };
 		9AC1387B1D4DD5EA00571C25 /* HotfixDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1387A1D4DD5EA00571C25 /* HotfixDemoUITests.m */; };
-		9AC138891D4DD77A00571C25 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC138881D4DD77A00571C25 /* JavaScriptCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9AC1388B1D4DD93E00571C25 /* demo.js in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1388A1D4DD93E00571C25 /* demo.js */; };
+		9AEA1A001D6594280028AB7A /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 9AEA19FF1D6594280028AB7A /* main.js */; };
+		9AEA1A511D65A8DD0028AB7A /* PatchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA1A501D65A8DD0028AB7A /* PatchManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,22 +56,6 @@
 		9A0FE91B1D544C9B00FF0037 /* TestObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestObject.swift; sourceTree = "<group>"; };
 		9A2ACB1D1D4DF0E000A2E1F1 /* YXYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXYViewController.h; sourceTree = "<group>"; };
 		9A2ACB1E1D4DF0E000A2E1F1 /* YXYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXYViewController.m; sourceTree = "<group>"; };
-		9A71B3B11D62CE48000FD087 /* JPLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPLoader.h; sourceTree = "<group>"; };
-		9A71B3B21D62CE48000FD087 /* JPLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPLoader.m; sourceTree = "<group>"; };
-		9A71B3B51D62CE48000FD087 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		9A71B3B61D62CE48000FD087 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
-		9A71B3B71D62CE48000FD087 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		9A71B3B81D62CE48000FD087 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
-		9A71B3B91D62CE48000FD087 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
-		9A71B3BA1D62CE48000FD087 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
-		9A71B3BB1D62CE48000FD087 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		9A71B3BC1D62CE48000FD087 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		9A71B3BD1D62CE48000FD087 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		9A71B3BE1D62CE48000FD087 /* RSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSA.h; sourceTree = "<group>"; };
-		9A71B3BF1D62CE48000FD087 /* RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSA.m; sourceTree = "<group>"; };
-		9A71B3C01D62CE48000FD087 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
-		9A71B3C11D62CE48000FD087 /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
-		9A71B3C31D62CE48000FD087 /* packer.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = packer.php; sourceTree = "<group>"; };
 		9AC1384F1D4DD5EA00571C25 /* HotfixDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotfixDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC138531D4DD5EA00571C25 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9AC138551D4DD5EA00571C25 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -96,7 +74,10 @@
 		9AC1387A1D4DD5EA00571C25 /* HotfixDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotfixDemoUITests.m; sourceTree = "<group>"; };
 		9AC1387C1D4DD5EA00571C25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AC138881D4DD77A00571C25 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		9AC1388A1D4DD93E00571C25 /* demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = demo.js; sourceTree = "<group>"; };
+		9AC1388A1D4DD93E00571C25 /* demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = demo.js; path = ../demo.js; sourceTree = "<group>"; };
+		9AEA19FF1D6594280028AB7A /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
+		9AEA1A4F1D65A8DD0028AB7A /* PatchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatchManager.h; sourceTree = "<group>"; };
+		9AEA1A501D65A8DD0028AB7A /* PatchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatchManager.m; sourceTree = "<group>"; };
 		A1EC331DD8F39FFC0AEEB82D /* libPods-HotfixDemoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HotfixDemoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27C92652E6047C9234E68F2 /* Pods-HotfixDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotfixDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HotfixDemoTests/Pods-HotfixDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		BDA21E72F6C20D0F7C95D6B8 /* Pods-HotfixDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotfixDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HotfixDemo/Pods-HotfixDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AC138891D4DD77A00571C25 /* JavaScriptCore.framework in Frameworks */,
+				9A4EBA121D64459B002BD8B4 /* JavaScriptCore.framework in Frameworks */,
 				8AD2CE2B2E429B07D150820B /* libPods-HotfixDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,53 +134,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		9A71B3B01D62CE48000FD087 /* Loader */ = {
-			isa = PBXGroup;
-			children = (
-				9A71B3B11D62CE48000FD087 /* JPLoader.h */,
-				9A71B3B21D62CE48000FD087 /* JPLoader.m */,
-				9A71B3B31D62CE48000FD087 /* libs */,
-				9A71B3C21D62CE48000FD087 /* tools */,
-			);
-			path = Loader;
-			sourceTree = "<group>";
-		};
-		9A71B3B31D62CE48000FD087 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				9A71B3B41D62CE48000FD087 /* minizip */,
-				9A71B3BE1D62CE48000FD087 /* RSA.h */,
-				9A71B3BF1D62CE48000FD087 /* RSA.m */,
-				9A71B3C01D62CE48000FD087 /* ZipArchive.h */,
-				9A71B3C11D62CE48000FD087 /* ZipArchive.m */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		9A71B3B41D62CE48000FD087 /* minizip */ = {
-			isa = PBXGroup;
-			children = (
-				9A71B3B51D62CE48000FD087 /* crypt.h */,
-				9A71B3B61D62CE48000FD087 /* ioapi.c */,
-				9A71B3B71D62CE48000FD087 /* ioapi.h */,
-				9A71B3B81D62CE48000FD087 /* mztools.c */,
-				9A71B3B91D62CE48000FD087 /* mztools.h */,
-				9A71B3BA1D62CE48000FD087 /* unzip.c */,
-				9A71B3BB1D62CE48000FD087 /* unzip.h */,
-				9A71B3BC1D62CE48000FD087 /* zip.c */,
-				9A71B3BD1D62CE48000FD087 /* zip.h */,
-			);
-			path = minizip;
-			sourceTree = "<group>";
-		};
-		9A71B3C21D62CE48000FD087 /* tools */ = {
-			isa = PBXGroup;
-			children = (
-				9A71B3C31D62CE48000FD087 /* packer.php */,
-			);
-			path = tools;
-			sourceTree = "<group>";
-		};
 		9ABE67CD1D54941C00556E8C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +142,8 @@
 				9A2ACB1D1D4DF0E000A2E1F1 /* YXYViewController.h */,
 				9A2ACB1E1D4DF0E000A2E1F1 /* YXYViewController.m */,
 				9A0FE9191D54466C00FF0037 /* SwiftViewController.swift */,
+				9AEA1A4F1D65A8DD0028AB7A /* PatchManager.h */,
+				9AEA1A501D65A8DD0028AB7A /* PatchManager.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -245,13 +181,12 @@
 		9AC138511D4DD5EA00571C25 /* HotfixDemo */ = {
 			isa = PBXGroup;
 			children = (
-				9A71B3B01D62CE48000FD087 /* Loader */,
 				9ABE67CE1D54943400556E8C /* Model */,
 				9ABE67CD1D54941C00556E8C /* Controller */,
 				9A2ACB1B1D4DE0DD00A2E1F1 /* StoryBoard */,
+				9AEA19FE1D6593E00028AB7A /* Util */,
 				9AC138551D4DD5EA00571C25 /* AppDelegate.h */,
 				9AC138561D4DD5EA00571C25 /* AppDelegate.m */,
-				9AC1388A1D4DD93E00571C25 /* demo.js */,
 				9AC138521D4DD5EA00571C25 /* Supporting Files */,
 			);
 			path = HotfixDemo;
@@ -285,6 +220,23 @@
 				9AC1387C1D4DD5EA00571C25 /* Info.plist */,
 			);
 			path = HotfixDemoUITests;
+			sourceTree = "<group>";
+		};
+		9AEA19FB1D6593DB0028AB7A /* Patch */ = {
+			isa = PBXGroup;
+			children = (
+				9AEA19FF1D6594280028AB7A /* main.js */,
+				9AC1388A1D4DD93E00571C25 /* demo.js */,
+			);
+			path = Patch;
+			sourceTree = "<group>";
+		};
+		9AEA19FE1D6593E00028AB7A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				9AEA19FB1D6593DB0028AB7A /* Patch */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		BC58D3CE08C402503642FF5F /* Pods */ = {
@@ -412,10 +364,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC138651D4DD5EA00571C25 /* LaunchScreen.storyboard in Resources */,
-				9A71B3CB1D62CE48000FD087 /* packer.php in Resources */,
 				9AC138621D4DD5EA00571C25 /* Assets.xcassets in Resources */,
 				9AC1385D1D4DD5EA00571C25 /* Main.storyboard in Resources */,
 				9AC1388B1D4DD93E00571C25 /* demo.js in Resources */,
+				9AEA1A001D6594280028AB7A /* main.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,19 +515,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AEA1A511D65A8DD0028AB7A /* PatchManager.m in Sources */,
 				9A0FE91A1D54466C00FF0037 /* SwiftViewController.swift in Sources */,
-				9A71B3C71D62CE48000FD087 /* unzip.c in Sources */,
 				9AC1385A1D4DD5EA00571C25 /* ViewController.m in Sources */,
 				9AC138571D4DD5EA00571C25 /* AppDelegate.m in Sources */,
 				9A2ACB1F1D4DF0E000A2E1F1 /* YXYViewController.m in Sources */,
-				9A71B3C61D62CE48000FD087 /* mztools.c in Sources */,
 				9AC138601D4DD5EA00571C25 /* HotfixDemo.xcdatamodeld in Sources */,
 				9AC138541D4DD5EA00571C25 /* main.m in Sources */,
-				9A71B3C91D62CE48000FD087 /* RSA.m in Sources */,
-				9A71B3C51D62CE48000FD087 /* ioapi.c in Sources */,
-				9A71B3CA1D62CE48000FD087 /* ZipArchive.m in Sources */,
-				9A71B3C81D62CE48000FD087 /* zip.c in Sources */,
-				9A71B3C41D62CE48000FD087 /* JPLoader.m in Sources */,
 				9A0FE91C1D544C9B00FF0037 /* TestObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -724,7 +670,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = HotfixDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = yogayu.github.io.HotfixDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -740,7 +686,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = HotfixDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = yogayu.github.io.HotfixDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

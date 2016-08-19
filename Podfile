@@ -2,8 +2,8 @@
 # platform :ios, '9.0'
 
 target 'HotfixDemo' do
-# Your Podfile
-  platform :ios, ‘7.0’
+
+  platform :ios, '7.0'
   pod 'JSPatch'
   pod 'AFNetworking', '~> 3.0'
 

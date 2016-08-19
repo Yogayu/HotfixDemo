@@ -17,16 +17,16 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    [self chooseTheColor];
+  [super viewDidLoad];
+  [self chooseTheColor];
 }
 
 - (IBAction)pushJPTableViewVC:(id)sender {
-    
+  
 }
 
 - (void)chooseTheColor {
-    
+  
 }
 
 @end

@@ -60,15 +60,40 @@
 	- 执行安全：灰度、监控、回退
 
 
-JSPatch可以通过写JS脚本文件，新增修改OC中的属性，方法，类等。
+JSPatch可以通过写JS脚本文件，新增修改OC中的属性，方法，类等。JSPatch，是基于Runtime的特性，通过写JS去动态的修改代码。也就是说，JS能做到的事情，直接写OC都能做到。这样的话，怎么存在着只有JSPatch能做而OC不能做的恶意攻击呢？或者说需是思考JS脚本独有的攻击方式吗？
 
-JSPatch，是基于Runtime的特性，通过写JS去动态的修改代码。也就是说，JS能做到的事情，直接写OC都能做到。这样的话，怎么存在着只有JSPatch能做而OC不能做的恶意攻击呢？或者说需是思考JS脚本独有的攻击方式吗？
+其实，如果反编译之后，只能知道部分的代码内容，部分类的名称，无法知道详细。而能看见所有的JS文件代码，那么就会存在风险。也就是说，JS文件提供了一个暴露的可以修改类的入口。
 
-其实，如果反编译之后，只能知道部分的代码内容，部分类的名称，无法知道详细。而能看见所有的JS文件代码，那么就会存在风险。也就是说，JS文件提供了一个**暴露**的可以修改类的**入口**。
+<!--如果能在JS文件方法的过程中截获并修改，那么将有很大的危险。但是，这总情况是很容易预防的。一种方式是加密，一种方式是校验。使用对称加密容易被破解，使用非对称加密进行校验是一种较好的方式。-->
 
-如果能在JS文件方法的过程中截获并修改，那么将有很大的危险。但是，这总情况是很容易预防的。一种方式是加密，一种方式是校验。使用非对称加密容易被破解，使用对称加密进行校验是一种较好的方式。
+## 部署以及使用
 
-## 部署
+1. 添加依赖
+	
+		platform :ios, '7.0'
+		pod 'JSPatch'
+2. 添加JavaScriptCore.framework
+3. 编写JS代码，在AppDelegate中下载执行。
+
+### 方式一
+
+1. 添加头文件
+
+		#import "JPEngine.h"
+		#import "AFNetworking.h" // Optional
+
+2. Demo中封装了两个函数：loadJSPatch,EvaluateScript，调用即可。
+
+3. 其中在EvaluateScript里调用
+
+		[JPEngine startEngine];
+		[JPEngine evaluateScript:jsFile];
+
+执行已下载的JS
+	
+### 方式二 使用JPLoad
+
+需要进行校验时，使用此方法较简便。
 
 1. 服务端根据App版本号建立目录，对JS进行加密之后下发。
 		
@@ -79,48 +104,14 @@ JSPatch，是基于Runtime的特性，通过写JS去动态的修改代码。也�
 
 2. 客户端请求JS文件，下载之后校验、解密。
 
-	调用JPLoad updateToVersion。
-	
-		  if (isPatchEnable) {
-		    if (currentVersion < newVersion) {
-		      [JPLoader updateToVersion:newVersion callback:^(NSError *error) {
-		        if (!error) {
-		          [JPLoader run];
-		          return;
-		        }
-		      }];
-		    } else if (currentVersion > minVersion) {
-		      [JPLoader run];
-		    }
-		  }
-
-	![-w320](media/14712542318789.jpg)
-
-
-
-3. 确定安全之后，执行。
-	
-## 使用
-
-1. 添加依赖
-	
-		platform :ios, '7.0'
-		pod 'JSPatch'
-	
-
-2. 添加JavaScriptCore.framework，添加JPLoad文件。
-3. 编写JS代码，在AppDelegate中下载执行。
-	
-	例如：
-	假设使用JPLoad，在AppDelegate.m 中
-	
 	- 添加头文件
 
 			#import "JPEngine.h"
 			#import "JPLoad.h"
 			
 	- didFinishLaunchingWithOptions 中 调用JPLoader中updateToVersion进行更新（会进行解密与校验），成功之后运行。
-		
+	![-r220](media/14712542318789.jpg)
+			
 			  NSInteger currentVersion = [JPLoader currentVersion];
 			  NSInteger minVersion = 0.0;
 			  NSInteger newVersion = 1.0;
@@ -138,18 +129,22 @@ JSPatch，是基于Runtime的特性，通过写JS去动态的修改代码。也�
 			      [JPLoader run];
 			    }
 			  }
+			  
+3. 确定安全之后，执行。
 	
 	
 具体JS编写方式见[JSPatch文档](https://github.com/bang590/JSPatch/wiki/JSPatch-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)。
 
-实际使用中配合[JPLoader](https://github.com/bang590/JSPatch/wiki/JSPatch-Loader-%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3)进行脚本的下载和更新，其中的[pack.php](https://github.com/bang590/JSPatch/blob/master/Loader/tools/packer.php)可用于脚本的加密和压缩。
+---
 
 > **问题：**
 
-- **如何确定在didFinishLaunchingWithOptions、applicationDidBecomeActive中调用的顺序？即何时下载、何时更新更合适？更新的频率设为多少最合适？**
-- **是否封装为一个Manager更好？如何封装？**
-- 目前有实现奔溃监控吗？灰度机制如何实现？
-- 是否需要及时撤回脚本？(JPCleaner)
+- 如何确定在didFinishLaunchingWithOptions、applicationDidBecomeActive中调用的顺序？即何时下载、何时更新更合适？更新的频率设为多少最合适？
+	在didFinishLaunchingWithOptions中下载执行。
+- 是否封装为一个Manager更好？如何封装？是。
+- 目前有实现奔溃监控吗？灰度机制如何实现？服务端实现。
+- 是否需要及时撤回脚本？不需要。
+- Pod中无法修改？思考中。
 
 ## 辅助工具
 
