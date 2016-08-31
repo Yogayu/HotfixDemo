@@ -135,18 +135,7 @@ JSPatch可以通过写JS脚本文件，新增修改OC中的属性，方法，类
 	- [JSPatch总结](http://albert43.net/2015/07/12/JSPatch%E6%80%BB%E7%BB%93/)
 
 
+Thanks for reading.
 
 ---
-
-设计Manager
-
-1. Manager 是否为单列或着Class Method？
-2. 整体流程
-
-		- (void)run;  // runSpatch
-		- (void)runScript;
-		- (NSString *)fileMD5:(NSString *)filePath; 
-		- (void)runTestScriptInBundle; // locle file
-		- (void)update:(NSInteger)version patchURL:(NSURL*)patchURL;
-		- (NSInteger)currentVersion;
 

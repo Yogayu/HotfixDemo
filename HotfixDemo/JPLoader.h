@@ -18,8 +18,8 @@ typedef enum {
 } JPUpdateError;
 
 @interface JPLoader : NSObject
-+ (BOOL)runScript;
 + (void)runPatch;
++ (BOOL)runScript;
 + (void)updateToVersion:(NSInteger)version patchURL:(NSURL *)patchURL fileMD5: (NSString*)fileMD5 callback:(JPUpdateCallback)callback;
 + (void)runTestScriptInBundle;
 + (void)setLogger:(void(^)(NSString *log))logger;
