@@ -75,63 +75,20 @@ JSPatch可以通过写JS脚本文件，新增修改OC中的属性，方法，类
 2. 添加JavaScriptCore.framework
 3. 编写JS代码，在AppDelegate中下载执行。
 
-### 方式一
-
-1. 添加头文件
-
-		#import "JPEngine.h"
-		#import "AFNetworking.h" // Optional
-
-2. Demo中封装了两个函数：loadJSPatch,EvaluateScript，调用即可。
-
-3. 其中在EvaluateScript里调用
-
-		[JPEngine startEngine];
-		[JPEngine evaluateScript:jsFile];
-
-执行已下载的JS
+4. 使用JPLoader
 	
-### 方式二 使用JPLoad
-
-需要进行校验时，使用此方法较简便。
-
-1. 服务端根据App版本号建立目录，对JS进行加密之后下发。
+	在didFinishLaunchingWithOptions中：
+	
+	运行：
+	
+		[JPLoader runPatch];
+			
+	本地调试运行（默认文件名为main.js）：
 		
-		root -> AppVersion -> v1.zip
-
-	eg.![4_6_1](media/4_6_1.png)
-
-
-2. 客户端请求JS文件，下载之后校验、解密。
-
-	- 添加头文件
-
-			#import "JPEngine.h"
-			#import "JPLoad.h"
-			
-	- didFinishLaunchingWithOptions 中 调用JPLoader中updateToVersion进行更新（会进行解密与校验），成功之后运行。
-	![-w240](media/14712542318789.jpg)
-			
-			  NSInteger currentVersion = [JPLoader currentVersion];
-			  NSInteger minVersion = 0.0;
-			  NSInteger newVersion = 1.0;
-			  BOOL isPatchEnable = YES;
-			  
-			  if (isPatchEnable) {
-			    if (currentVersion < newVersion) {
-			      [JPLoader updateToVersion:newVersion callback:^(NSError *error) {
-			        if (!error) {
-			          [JPLoader run];
-			          return;
-			        }
-			      }];
-			    } else if (currentVersion > minVersion) {
-			      [JPLoader run];
-			    }
-			  }
-			  
-3. 确定安全之后，执行。
-	
+		// Local test
+		[JPLoader runTestScriptInBundle];
+		
+		
 	
 具体JS编写方式见[JSPatch文档](https://github.com/bang590/JSPatch/wiki/JSPatch-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)。
 
