@@ -17,12 +17,10 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-//  PatchManager *patchManager = [[PatchManager alloc] init];
-//  [patchManager run];
-//  [patchManager runTestScriptInBundle];
   
   [JPLoader runPatch];
+  // local test
+  // [JPLoader runTestScriptInBundle];
   
   return YES;
 }

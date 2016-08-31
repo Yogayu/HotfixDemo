@@ -25,9 +25,8 @@
 		9AC138651D4DD5EA00571C25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC138631D4DD5EA00571C25 /* LaunchScreen.storyboard */; };
 		9AC138701D4DD5EA00571C25 /* HotfixDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1386F1D4DD5EA00571C25 /* HotfixDemoTests.m */; };
 		9AC1387B1D4DD5EA00571C25 /* HotfixDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1387A1D4DD5EA00571C25 /* HotfixDemoUITests.m */; };
-		9AC1388B1D4DD93E00571C25 /* demo.js in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1388A1D4DD93E00571C25 /* demo.js */; };
+		9AC1388B1D4DD93E00571C25 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1388A1D4DD93E00571C25 /* main.js */; };
 		9AEA1A001D6594280028AB7A /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = 9AEA19FF1D6594280028AB7A /* test.js */; };
-		9AEA1A511D65A8DD0028AB7A /* PatchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA1A501D65A8DD0028AB7A /* PatchManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,10 +79,8 @@
 		9AC1387A1D4DD5EA00571C25 /* HotfixDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotfixDemoUITests.m; sourceTree = "<group>"; };
 		9AC1387C1D4DD5EA00571C25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AC138881D4DD77A00571C25 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		9AC1388A1D4DD93E00571C25 /* demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = demo.js; path = ../demo.js; sourceTree = "<group>"; };
+		9AC1388A1D4DD93E00571C25 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main.js; path = ../main.js; sourceTree = "<group>"; };
 		9AEA19FF1D6594280028AB7A /* test.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
-		9AEA1A4F1D65A8DD0028AB7A /* PatchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatchManager.h; sourceTree = "<group>"; };
-		9AEA1A501D65A8DD0028AB7A /* PatchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatchManager.m; sourceTree = "<group>"; };
 		A1EC331DD8F39FFC0AEEB82D /* libPods-HotfixDemoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HotfixDemoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27C92652E6047C9234E68F2 /* Pods-HotfixDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotfixDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HotfixDemoTests/Pods-HotfixDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		BDA21E72F6C20D0F7C95D6B8 /* Pods-HotfixDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotfixDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HotfixDemo/Pods-HotfixDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,8 +145,6 @@
 				9A2ACB1D1D4DF0E000A2E1F1 /* YXYViewController.h */,
 				9A2ACB1E1D4DF0E000A2E1F1 /* YXYViewController.m */,
 				9A0FE9191D54466C00FF0037 /* SwiftViewController.swift */,
-				9AEA1A4F1D65A8DD0028AB7A /* PatchManager.h */,
-				9AEA1A501D65A8DD0028AB7A /* PatchManager.m */,
 				9A3EDE1E1D73DA0500356913 /* JPLoader.h */,
 				9A3EDE1F1D73DA0500356913 /* JPLoader.m */,
 				9A9592F61D75747A00F5673A /* PatchInfo.h */,
@@ -236,7 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				9AEA19FF1D6594280028AB7A /* test.js */,
-				9AC1388A1D4DD93E00571C25 /* demo.js */,
+				9AC1388A1D4DD93E00571C25 /* main.js */,
 			);
 			path = Patch;
 			sourceTree = "<group>";
@@ -376,7 +371,7 @@
 				9AC138651D4DD5EA00571C25 /* LaunchScreen.storyboard in Resources */,
 				9AC138621D4DD5EA00571C25 /* Assets.xcassets in Resources */,
 				9AC1385D1D4DD5EA00571C25 /* Main.storyboard in Resources */,
-				9AC1388B1D4DD93E00571C25 /* demo.js in Resources */,
+				9AC1388B1D4DD93E00571C25 /* main.js in Resources */,
 				9AEA1A001D6594280028AB7A /* test.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,7 +520,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AEA1A511D65A8DD0028AB7A /* PatchManager.m in Sources */,
 				9A0FE91A1D54466C00FF0037 /* SwiftViewController.swift in Sources */,
 				9AC1385A1D4DD5EA00571C25 /* ViewController.m in Sources */,
 				9AC138571D4DD5EA00571C25 /* AppDelegate.m in Sources */,

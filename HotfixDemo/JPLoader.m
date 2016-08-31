@@ -7,7 +7,6 @@
 //  Copyright © 2016年 yogayu.github.io. All rights reserved.
 //
 
-
 #import "JPLoader.h"
 #import "JPEngine.h"
 #import <CommonCrypto/CommonDigest.h>
