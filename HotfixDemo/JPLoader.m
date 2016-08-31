@@ -95,7 +95,7 @@ void (^JPLogger)(NSString *log);
             }
           }];
           
-        } else if (currentVersion >= MinVersion) {
+        } else if (currentVersion > MinVersion) {
           [self runScript];
         }
         
