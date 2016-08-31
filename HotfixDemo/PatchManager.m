@@ -13,7 +13,10 @@
 #define FilePath ([[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil])
 
 @implementation PatchManager
-
+/**
+ *  如果patch开启并且更新了，那么就run新的patch script
+ *  存在着哪一些意外情况？
+ */
 - (void)run
 {
   BOOL patchEnable = YES;
@@ -31,7 +34,6 @@
       [self runScript];
     }
   }
-  
 }
 
 - (void) update:(NSInteger)version patchURL:(NSURL *)patchURL

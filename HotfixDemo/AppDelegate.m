@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PatchManager.h"
+#import "JPLoader.h"
 
 @interface AppDelegate ()
 
@@ -17,9 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-  PatchManager *patchManager = [[PatchManager alloc] init];
+//  PatchManager *patchManager = [[PatchManager alloc] init];
 //  [patchManager run];
-  [patchManager runTestScriptInBundle];
+//  [patchManager runTestScriptInBundle];
+  
+  [JPLoader runPatch];
   
   return YES;
 }
