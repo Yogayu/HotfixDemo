@@ -89,7 +89,7 @@ void (^JPLogger)(NSString *log);
     NSString *downloadURL = patchInfo[@"download_url"];
     NSInteger newVersion = [patchInfo[@"version"] integerValue];
     
-    if ((patchEnabled = dic[@"patch_enabled"])) {
+    if ((patchEnabled = [dic[@"patch_enabled"] integerValue])) {
       if (currentVersion < newVersion) {
         
         NSURL *patchURL = [NSURL URLWithString:downloadURL];
@@ -102,11 +102,11 @@ void (^JPLogger)(NSString *log);
       } else if (currentVersion > MIN_VERSION) {
         [self runScript];
       }
-      
-      NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-      [[NSUserDefaults standardUserDefaults] setBool:patchEnabled forKey:kJSPatchEnabled(appVersion)];
-      [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    
+    NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [[NSUserDefaults standardUserDefaults] setBool:patchEnabled forKey:kJSPatchEnabled(appVersion)];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
   } else {
     
