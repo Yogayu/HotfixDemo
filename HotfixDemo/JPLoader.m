@@ -7,11 +7,13 @@
 //  Copyright © 2016年 yogayu.github.io. All rights reserved.
 //
 
+
 #import "JPLoader.h"
 #import "JPEngine.h"
 #import <CommonCrypto/CommonDigest.h>
 
-#define MinVersion -1
+#define MIN_VERSION -1
+#define PATCH_REQUEST_TIMEOUT 10
 #define kJSPatchVersion(appVersion)   [NSString stringWithFormat:@"JSPatchVersion_%@", appVersion]
 #define kJSPatchEnabled(appVersion)   [NSString stringWithFormat:@"JSPatchEnabled_%@", appVersion]
 
@@ -72,47 +74,47 @@ void (^JPLogger)(NSString *log);
   __block BOOL patchEnabled = [self isPatchEnabled];
   
   NSURL *downloadURL = [NSURL URLWithString:@"https://api.douban.com/v2/fm/get_ios_patch"];
-  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:downloadURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20.0];
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:downloadURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:PATCH_REQUEST_TIMEOUT];
   [request setHTTPMethod:@"POST"];
   
-  NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * data, NSURLResponse *response, NSError *error) {
-    if (!error) {
-      
-      NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-      NSDictionary *patch_info = dic[@"patch"];
-      NSString *downloadURL = patch_info[@"download_url"];
-      NSString *md5 = patch_info[@"md5"];
-      NSInteger newVersion = [patch_info[@"version"] integerValue];
-      
-      if ((patchEnabled = dic[@"patch_enabled"])) {
-        if (currentVersion < newVersion) {
-          
-          NSURL *patchURL = [NSURL URLWithString:downloadURL];
-          [self updateToVersion:newVersion patchURL:patchURL fileMD5: md5 callback:^(NSError *error) {
-            if (!error){
-              [self runScript];
-            }
-          }];
-          
-        } else if (currentVersion > MinVersion) {
-          [self runScript];
-        }
+  NSError *error = nil;
+  NSURLResponse *response = nil;
+  
+  NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+  if (data) {
+    
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+    NSDictionary *patchInfo = dic[@"patch"];
+    NSString *md5 = patchInfo[@"md5"];
+    NSString *downloadURL = patchInfo[@"download_url"];
+    NSInteger newVersion = [patchInfo[@"version"] integerValue];
+    
+    if ((patchEnabled = dic[@"patch_enabled"])) {
+      if (currentVersion < newVersion) {
         
-        NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-        [[NSUserDefaults standardUserDefaults] setBool:patchEnabled forKey:kJSPatchEnabled(appVersion)];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-      }
-      
-    } else {
-      
-      if (JPLogger) JPLogger([NSString stringWithFormat:@"JSPatch: request error %@", error]);
-      if (patchEnabled) {
+        NSURL *patchURL = [NSURL URLWithString:downloadURL];
+        [self updateToVersion:newVersion patchURL:patchURL fileMD5: md5 callback:^(NSError *error) {
+          if (!error){
+            [self runScript];
+          }
+        }];
+        
+      } else if (currentVersion > MIN_VERSION) {
         [self runScript];
       }
+      
+      NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+      [[NSUserDefaults standardUserDefaults] setBool:patchEnabled forKey:kJSPatchEnabled(appVersion)];
+      [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
-  }];
-  [task resume];
+  } else {
+    
+    if (patchEnabled) {
+      [self runScript];
+    }
+    if (JPLogger) JPLogger([NSString stringWithFormat:@"JSPatch: request error %@", error]);
+  }
 }
 
 + (BOOL)runScript
@@ -202,7 +204,6 @@ void (^JPLogger)(NSString *log);
     }
     
   }];
-  
   [task resume];
 }
 
