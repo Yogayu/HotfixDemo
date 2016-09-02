@@ -14,6 +14,7 @@
 
 ## 方案
 
+
 国内流行的有JSPatch和WaxPatch，国外相应的服务有Rollout和Apptimize，一共四种。
 
 1. [JSPatch](https://github.com/bang590/JSPatch/wiki/JSPatch-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)

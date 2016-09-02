@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "PatchManager.h"
 #import "JPLoader.h"
 
 @interface AppDelegate ()
@@ -19,6 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   
   [JPLoader runPatch];
+  
   // local test
   // [JPLoader runTestScriptInBundle];
   

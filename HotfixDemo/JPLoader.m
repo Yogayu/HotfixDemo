@@ -1,4 +1,4 @@
-//
+////
 //  JPLoader.m
 //  HotfixDemo
 //
@@ -6,7 +6,6 @@
 //  modified form JPLoader
 //  Copyright © 2016年 yogayu.github.io. All rights reserved.
 //
-
 
 #import "JPLoader.h"
 #import "JPEngine.h"
@@ -77,19 +76,18 @@ void (^JPLogger)(NSString *log);
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:downloadURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:PATCH_REQUEST_TIMEOUT];
   [request setHTTPMethod:@"POST"];
   
-  NSError *error = nil;
+  NSError *error = nil; 
   NSURLResponse *response = nil;
   
   NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
   if (data) {
-    
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
     NSDictionary *patchInfo = dic[@"patch"];
     NSString *md5 = patchInfo[@"md5"];
     NSString *downloadURL = patchInfo[@"download_url"];
     NSInteger newVersion = [patchInfo[@"version"] integerValue];
     
-    if ((patchEnabled = [dic[@"patch_enabled"] integerValue])) {
+    if ((patchEnabled = [dic[@"patch_enabled"] boolValue])) {
       if (currentVersion < newVersion) {
         
         NSURL *patchURL = [NSURL URLWithString:downloadURL];
@@ -111,7 +109,7 @@ void (^JPLogger)(NSString *log);
   } else {
     
     if (patchEnabled) {
-      [self runScript];
+      [self runScript]; // run local file
     }
     if (JPLogger) JPLogger([NSString stringWithFormat:@"JSPatch: request error %@", error]);
   }
