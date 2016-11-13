@@ -17,11 +17,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   
-  [JPLoader runPatch];
-  
-  // local test
-  // [JPLoader runTestScriptInBundle];
-  
+ 
+//   [JPLoader runPatch];
+	
+	// local test
+	[JPLoader runTestScriptInBundle];
+	
   return YES;
 }
 

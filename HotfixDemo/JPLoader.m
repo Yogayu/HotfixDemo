@@ -72,7 +72,7 @@ void (^JPLogger)(NSString *log);
   NSInteger currentVersion = [self currentVersion];
   __block BOOL patchEnabled = [self isPatchEnabled];
   
-  NSURL *downloadURL = [NSURL URLWithString:@"https://api.douban.com/v2/fm/get_ios_patch"];
+  NSURL *downloadURL = [NSURL URLWithString:@"https://raw.githubusercontent.com/Yogayu/iOSYoga/master/hotfix_demo.js"];
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:downloadURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:PATCH_REQUEST_TIMEOUT];
   [request setHTTPMethod:@"POST"];
   

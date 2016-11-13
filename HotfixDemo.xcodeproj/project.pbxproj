@@ -15,7 +15,6 @@
 		9A2ACB1F1D4DF0E000A2E1F1 /* YXYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2ACB1E1D4DF0E000A2E1F1 /* YXYViewController.m */; };
 		9A3EDE201D73DA0500356913 /* JPLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EDE1F1D73DA0500356913 /* JPLoader.m */; };
 		9A4EBA121D64459B002BD8B4 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC138881D4DD77A00571C25 /* JavaScriptCore.framework */; };
-		9A9592F81D75747A00F5673A /* PatchInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9592F71D75747A00F5673A /* PatchInfo.m */; };
 		9AC138541D4DD5EA00571C25 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC138531D4DD5EA00571C25 /* main.m */; };
 		9AC138571D4DD5EA00571C25 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC138561D4DD5EA00571C25 /* AppDelegate.m */; };
 		9AC1385A1D4DD5EA00571C25 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC138591D4DD5EA00571C25 /* ViewController.m */; };
@@ -59,8 +58,6 @@
 		9A2ACB1E1D4DF0E000A2E1F1 /* YXYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXYViewController.m; sourceTree = "<group>"; };
 		9A3EDE1E1D73DA0500356913 /* JPLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPLoader.h; sourceTree = "<group>"; };
 		9A3EDE1F1D73DA0500356913 /* JPLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPLoader.m; sourceTree = "<group>"; };
-		9A9592F61D75747A00F5673A /* PatchInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatchInfo.h; sourceTree = "<group>"; };
-		9A9592F71D75747A00F5673A /* PatchInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatchInfo.m; sourceTree = "<group>"; };
 		9AC1384F1D4DD5EA00571C25 /* HotfixDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotfixDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC138531D4DD5EA00571C25 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9AC138551D4DD5EA00571C25 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -145,10 +142,6 @@
 				9A2ACB1D1D4DF0E000A2E1F1 /* YXYViewController.h */,
 				9A2ACB1E1D4DF0E000A2E1F1 /* YXYViewController.m */,
 				9A0FE9191D54466C00FF0037 /* SwiftViewController.swift */,
-				9A3EDE1E1D73DA0500356913 /* JPLoader.h */,
-				9A3EDE1F1D73DA0500356913 /* JPLoader.m */,
-				9A9592F61D75747A00F5673A /* PatchInfo.h */,
-				9A9592F71D75747A00F5673A /* PatchInfo.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -239,6 +232,8 @@
 		9AEA19FE1D6593E00028AB7A /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				9A3EDE1E1D73DA0500356913 /* JPLoader.h */,
+				9A3EDE1F1D73DA0500356913 /* JPLoader.m */,
 				9AEA19FB1D6593DB0028AB7A /* Patch */,
 			);
 			name = Util;
@@ -327,11 +322,12 @@
 		9AC138471D4DD5EA00571C25 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = yogayu.github.io;
 				TargetAttributes = {
 					9AC1384E1D4DD5EA00571C25 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					9AC1386A1D4DD5EA00571C25 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -527,7 +523,6 @@
 				9AC138601D4DD5EA00571C25 /* HotfixDemo.xcdatamodeld in Sources */,
 				9A3EDE201D73DA0500356913 /* JPLoader.m in Sources */,
 				9AC138541D4DD5EA00571C25 /* main.m in Sources */,
-				9A9592F81D75747A00F5673A /* PatchInfo.m in Sources */,
 				9A0FE91C1D544C9B00FF0037 /* TestObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -599,8 +594,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -644,8 +641,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -664,6 +663,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -682,6 +682,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HotfixDemo/HotfixDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -697,6 +698,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = yogayu.github.io.HotfixDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HotfixDemo/HotfixDemo-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
