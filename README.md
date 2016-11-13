@@ -1,6 +1,6 @@
 # Hot Fix
 
-> Hot fix Demo for iOS.
+> This is a project that I created when I worked as an intern at Douban FM.
 
 [TOC]
 
